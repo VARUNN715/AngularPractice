@@ -1,0 +1,29 @@
+
+        html, body {
+            height: 100%;
+            margin: 0; /* Ensures no extra margins */
+            display: flex;
+            justify-content: center; /* Horizontal centering */
+            align-items: center; /* Vertical centering */
+            background-color: #f4f4f4; /* Optional background color */
+        }
+        .container {
+            /* text-align: center; */
+        }
+        .card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow effect */
+            width: 400px; /* Adjusts the card width */
+        }
+        table {
+            width: 100%; /* Ensures the table fits within the card */
+            text-align: left;
+        }
+        th {
+            text-align: center;
+        }
+.table-bordered{
+    border-color: white;
+}

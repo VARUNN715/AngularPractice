@@ -1,0 +1,44 @@
+<h1>THis is Form Forms Component</h1>
+<div class="container">
+    
+    <div class="card">
+        <form action="post">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th [attr.colspan]="2">Pls Fill This Form</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td [attr.colspan]="1"><label for="name" >name:</label></td>
+                        <td [attr.colspan]="1"><input type="text" value="name"/></td>
+                    </tr>
+                    <tr>
+                        <td [attr.colspan]="1"><label for="email" >email:</label></td>
+                        <td [attr.colspan]="1"><input type="email" value="email"/></td>
+                    </tr>
+                    <tr>
+                        <td [attr.colspan]="1"><label for="password" >password:</label></td>
+                        <td [attr.colspan]="1"><input type="password" value="password" /></td>
+                    </tr>
+                    <tr>
+                        <td [attr.colspan]="1"><label for="conPass" >confirm password:</label></td>
+                        <td [attr.colspan]="1"><input type="password" value="password" /></td>
+                    </tr>
+                    <tr>
+                        <td><label for="gender">gender:</label></td>
+                        <td><input type="radio" class="form-check-input" value="Male" name="gender">Male  
+                        <input type="radio" class="form-check-input" value="Female" name="gender">Female  
+                        <input type="radio" class="form-check-input" value="Others" name="gender">Others  
+                        </td>
+                    </tr>
+                    <tr>
+                        <td [attr.colspan]="2" style="text-align: center;"><button class="btn btn-primary" style="width: 60%;">submit</button></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>

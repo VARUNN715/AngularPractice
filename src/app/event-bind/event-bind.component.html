@@ -1,0 +1,15 @@
+
+<!--the below is the example for event binding-->
+
+<!-- <input type="text" #varValue><br><br>
+<button (click)="onClick(varValue.value)" class="btn btn-primary" id="btn1">Change Name</button>
+<button (click)="onReset()" class="btn btn-success" id="btn2">Reset</button>
+<h2>{{userName}}</h2> -->
+
+<!-- This is 2 way binding-->
+<input type="text" [(ngModel)]="userName">
+<h2>Hi!! Iam {{userName}}</h2><br><br><br>
+
+<h1>{{time}}</h1><br><br><br>
+
+<button (click)="onTime()">Start</button>
