@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class NgPipesComponent {
   people = ["Alice","Nancy","John","Smith","cena"]
+  name="tarun"
+
+  user="Hello123"
 }

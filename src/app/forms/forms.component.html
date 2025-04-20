@@ -1,44 +1,154 @@
-<h1>THis is Form Forms Component</h1>
+<h1>This is Form Forms Component</h1>
 <div class="container">
-    
-    <div class="card">
-        <form action="post">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th [attr.colspan]="2">Pls Fill This Form</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td [attr.colspan]="1"><label for="name" >name:</label></td>
-                        <td [attr.colspan]="1"><input type="text" value="name"/></td>
-                    </tr>
-                    <tr>
-                        <td [attr.colspan]="1"><label for="email" >email:</label></td>
-                        <td [attr.colspan]="1"><input type="email" value="email"/></td>
-                    </tr>
-                    <tr>
-                        <td [attr.colspan]="1"><label for="password" >password:</label></td>
-                        <td [attr.colspan]="1"><input type="password" value="password" /></td>
-                    </tr>
-                    <tr>
-                        <td [attr.colspan]="1"><label for="conPass" >confirm password:</label></td>
-                        <td [attr.colspan]="1"><input type="password" value="password" /></td>
-                    </tr>
-                    <tr>
-                        <td><label for="gender">gender:</label></td>
-                        <td><input type="radio" class="form-check-input" value="Male" name="gender">Male  
-                        <input type="radio" class="form-check-input" value="Female" name="gender">Female  
-                        <input type="radio" class="form-check-input" value="Others" name="gender">Others  
-                        </td>
-                    </tr>
-                    <tr>
-                        <td [attr.colspan]="2" style="text-align: center;"><button class="btn btn-primary" style="width: 60%;">submit</button></td>
-                    </tr>
+  <div class="card">
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th [attr.colspan]="2">Please Fill This Form</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Name Field -->
+          <tr>
+            <td [attr.colspan]="1"><label for="firstname">Name:</label></td>
+            <td [attr.colspan]="1">
+              <input
+                #name="ngModel"
+                type="text"
+                required
+                name="firstname"
+                ngModel
+                minlength="5"
+                maxlength="20"
+              />
+              <div *ngIf="name.touched && name.invalid">
+                <div *ngIf="name.errors?.['required']" class="text-danger">Name is required!</div>
+                <div *ngIf="name.errors?.['minlength']" class="text-danger">
+                  Name must be at least 5 characters.
+                </div>
+                <div *ngIf="name.errors?.['maxlength']" class="text-danger">
+                  Name cannot exceed 20 characters.
+                </div>
+              </div>
+            </td>
+          </tr>
 
-                </tbody>
-            </table>
-        </form>
-    </div>
+          <!-- Email Field -->
+          <tr>
+            <td [attr.colspan]="1"><label for="email">Email:</label></td>
+            <td [attr.colspan]="1">
+              <input
+                #email="ngModel"
+                type="email"
+                required
+                name="email"
+                ngModel
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+              />
+              <div *ngIf="email.touched && email.invalid" >
+                <div *ngIf="email.errors?.['required']" class="text-danger">Email is required!</div>
+                <div *ngIf="email.errors?.['pattern']" class="text-danger">Enter a valid email address.</div>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Password Field -->
+          <tr>
+            <td [attr.colspan]="1"><label for="password">Password:</label></td>
+            <td [attr.colspan]="1">
+              <input
+                #password="ngModel"
+                type="password"
+                required
+                name="password"
+                [(ngModel)]="passwordValue"
+                minlength="8"
+              />
+              <div *ngIf="password.touched && password.invalid">
+                <div *ngIf="password.errors?.['required']" class="text-danger">Password is required!</div>
+                <div *ngIf="password.errors?.['minlength']" class="text-danger">
+                  Password must be at least 8 characters long.
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Confirm Password Field -->
+          <tr>
+            <td [attr.colspan]="1"><label for="confirmPassword">Confirm Password:</label></td>
+            <td [attr.colspan]="1">
+              <input
+                #confirmPassword="ngModel"
+                type="password"
+                required
+                name="confirmPassword"
+                [(ngModel)]="confirmPasswordValue"
+              />
+              <div *ngIf="confirmPassword.touched && confirmPassword.invalid">
+                <div *ngIf="confirmPassword.errors?.['required']" class="text-danger">
+                  Confirm Password is required!
+                </div>
+              </div>
+              <!-- Custom Validation Message -->
+              <div *ngIf="confirmPassword.touched && confirmPasswordValue !== passwordValue" class="text-danger">
+                Passwords must match!
+              </div>
+            </td>
+          </tr>
+
+          <!-- Gender Field -->
+          <tr>
+            <td><label for="gender">Gender:</label></td>
+            <td>
+              <input
+                type="radio"
+                class="form-check-input"
+                value="Male"
+                name="gender"
+                required
+                ngModel
+                #gender="ngModel"
+              />
+              Male
+              <input
+                type="radio"
+                class="form-check-input"
+                value="Female"
+                name="gender"
+                required
+                ngModel
+              />
+              Female
+              <input
+                type="radio"
+                class="form-check-input"
+                value="Others"
+                name="gender"
+                required
+                ngModel
+              />
+              Others
+              <div *ngIf="gender.touched && gender.invalid">
+                <span class="text-danger">Gender selection is required!</span>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Submit Button -->
+          <tr>
+            <td [attr.colspan]="2" style="text-align: center;">
+              <button
+                [disabled]="form.invalid"
+                class="btn btn-success"
+                style="width: 60%;"
+              >
+                Submit
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
 </div>

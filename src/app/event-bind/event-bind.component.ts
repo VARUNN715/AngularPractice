@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class EventBindComponent {
   userName = "Varun";
   onClick(abc:string){
-    this.userName = abc;
+    this.userName = abc+123;
   }
   onReset(){
     this.userName ="Varun";
